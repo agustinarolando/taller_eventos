@@ -1,12 +1,21 @@
+//Seleccionar los elementos div y button.
+let div = document.getElementById("miDiv");
+
+let boton = document.getElementById("miBtn");
+
+//Crear una funcion que de una alerta
 function saludarDiv() {
     alert("Hola! Soy el div");
 }
 
-document.getElementById("miDiv").addEventListener("click", saludarDiv);
+//Añadir eventos a los elementos
+div.addEventListener("click", saludarDiv);
 
-document.getElementsByTagName("button")[0].addEventListener("click", function() {
+boton.addEventListener("click", function() {
     alert('Hola!');
-    document.getElementById("miDiv").removeEventListener("click", saludarDiv)
-})
-// Otra forma de añadir la misma alerta
-// document.getElementsByTagName("div")[0].addEventListener("click", saludarDiv);
+    event.stopPropagation();
+});
+
+//Anteriormente quise utilizar removeEventListener,
+// pero solo funcionaba si hacias click en el div y luego
+// en el botón. Ahora no importa el orden del click.
